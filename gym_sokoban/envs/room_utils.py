@@ -2,6 +2,10 @@ import random
 import numpy as np
 import marshal
 
+def seed_room_generation(seed):
+    # IMPORTANT: These two lines ensure deterministic sampling of rooms!
+    random.seed(seed)
+    np.random.seed(seed)
 
 def generate_room(dim=(13, 13), p_change_directions=0.35, num_steps=25, num_boxes=3, tries=4, second_player=False):
     """

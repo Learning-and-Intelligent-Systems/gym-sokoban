@@ -2,7 +2,7 @@ import gym
 from gym.utils import seeding
 from gym.spaces.discrete import Discrete
 from gym.spaces import Box
-from .room_utils import generate_room
+from .room_utils import generate_room, seed_room_generation
 from .render_utils import room_to_rgb, room_to_tiny_world_rgb
 import numpy as np
 
@@ -50,6 +50,7 @@ class SokobanEnv(gym.Env):
 
     def seed(self, seed=None):
         self.np_random, seed = seeding.np_random(seed)
+        seed_room_generation(seed)
         return [seed]
 
     def step(self, action, observation_mode='rgb_array'):
